@@ -1,0 +1,6 @@
+@AddCCFlow_HostAddress = http://localhost:5081
+
+GET {{AddCCFlow_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

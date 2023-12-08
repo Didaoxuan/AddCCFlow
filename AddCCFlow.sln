@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddCCFlow", "AddCCFlow\AddCCFlow.csproj", "{34F3357C-C0CF-439E-BA06-C236D09037CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34F3357C-C0CF-439E-BA06-C236D09037CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34F3357C-C0CF-439E-BA06-C236D09037CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34F3357C-C0CF-439E-BA06-C236D09037CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34F3357C-C0CF-439E-BA06-C236D09037CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {228DA0DE-E918-493E-844A-508FF3E54781}
+	EndGlobalSection
+EndGlobal
