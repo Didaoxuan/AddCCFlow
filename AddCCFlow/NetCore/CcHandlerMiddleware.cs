@@ -1,15 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Options;
-using System.Linq;
-using System.Text.RegularExpressions;
-using BP.WF.HttpHandler;
-using BP.Web;
-using System.Text;
-using BP.DA;
-using Microsoft.Extensions.Logging;
+﻿using BP.DA;
 using BP.Difference;
+using BP.WF.HttpHandler;
+using System.Text;
 
 namespace CCFlow
 {
@@ -28,10 +20,7 @@ namespace CCFlow
         /// <remarks>2019-7-29 zl</remarks>
         public CcHandlerMiddleware(RequestDelegate next, ILogger<CcHandlerMiddleware> logger)
         {
-            if (next == null)
-            {
-                throw new ArgumentNullException(nameof(next));
-            }
+            ArgumentNullException.ThrowIfNull(next);
             _next = next;
             _logger = logger;
         }
@@ -49,7 +38,7 @@ namespace CCFlow
             string path = context.Request.Path;
 
             // 首页 /
-            if (path=="/" || path=="/index.html") 
+            if (path == "/" || path == "/index.html")
             {
                 if (DBAccess.IsExitsObject("WF_Flow") == false)
                     context.Response.Redirect("/WF/Admin/DBInstall.htm");
@@ -60,7 +49,7 @@ namespace CCFlow
             }
 
             // 动态执行页
-            if(path.EndsWith(".ashx", StringComparison.OrdinalIgnoreCase))
+            if (path.EndsWith(".ashx", StringComparison.OrdinalIgnoreCase))
             {
                 // 获取 “Handler业务处理类”的Type
                 Type ctrlType = null;
@@ -94,13 +83,13 @@ namespace CCFlow
                     string data = ctrl.DoMethod(ctrl, ctrl.DoType);
 
                     //返回执行的结果.
-                    if (DataType.IsNullOrEmpty(data)==false && data.StartsWith("err@", StringComparison.OrdinalIgnoreCase))
+                    if (DataType.IsNullOrEmpty(data) == false && data.StartsWith("err@", StringComparison.OrdinalIgnoreCase))
                     {
                         _logger.LogError(data + Environment.NewLine + "请求的Url为：" + context.Request.Path.ToUriComponent() + context.Request.QueryString);
                     }
-                    
+
                     HttpContextHelper.Response.StatusCode = StatusCodes.Status200OK;
-                    if(DataType.IsNullOrEmpty(data) == false)
+                    if (DataType.IsNullOrEmpty(data) == false)
                         HttpContextHelper.ResponseWriteString(data, Encoding.UTF8);
                 }
                 catch (Exception ex)

@@ -69,10 +69,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-
-//builder.Services.AddTransient<IStartupFilter, RequestSetOptionsStartupFilter>();
-//builder.Services.AddTransient<IApplicationBuilder, UseCcHandler>();
-
+builder.Services.AddTransient<IStartupFilter, RequestSetOptionsStartupFilter>();
 
 var app = builder.Build();
 
@@ -103,8 +100,8 @@ app.UseCookiePolicy(new CookiePolicyOptions
     HttpOnly = Microsoft.AspNetCore.CookiePolicy.HttpOnlyPolicy.Always
 });
 //ccflow核心中间件
-//app.UseCcHandler();
-app.UseMiddleware<CcHandlerMiddleware>();
+app.UseCcHandler();
+//app.UseMiddleware<CcHandlerMiddleware>();
 
 app.UseAuthorization();
 
