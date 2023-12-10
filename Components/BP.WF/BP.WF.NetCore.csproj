@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Remove="AppFast\**" />
+    <Compile Remove="Service References\**" />
+    <EmbeddedResource Remove="AppFast\**" />
+    <EmbeddedResource Remove="Service References\**" />
+    <None Remove="AppFast\**" />
+    <None Remove="Service References\**" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Remove="AssemblyInfo.cs" />
+    <Compile Remove="HttpHandler\Base\HttpHandlerBase.cs" />
+    <Compile Remove="WFEnum.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="iTextSharp.LGPLv2.Core" Version="1.6.1" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.2" />
+    <PackageReference Include="MySql.Data" Version="8.0.19" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Npgsql" Version="4.1.2" />
+    <PackageReference Include="NPOI" Version="2.4.1" />
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="2.19.60" />
+    <PackageReference Include="Spire.Doc" Version="9.12.12" />
+    <PackageReference Include="System.CodeDom" Version="4.7.0" />
+    <PackageReference Include="System.Data.Odbc" Version="4.7.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BP.En30\BP.En30.NetCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DmProvider">
+      <HintPath>..\..\RefDLL\DmProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentFTP">
+      <HintPath>..\..\RefDLL\FluentFTP.dll</HintPath>
+    </Reference>
+    <Reference Include="FtpSupport">
+      <HintPath>..\..\RefDLL\FtpSupport.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\..\RefDLL\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

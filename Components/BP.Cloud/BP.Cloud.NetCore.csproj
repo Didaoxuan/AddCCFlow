@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+<ImplicitUsings>disable</ImplicitUsings>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Port\OrgSetting\**" />
+    <Compile Remove="Template\WF\**" />
+    <EmbeddedResource Remove="Port\OrgSetting\**" />
+    <EmbeddedResource Remove="Template\WF\**" />
+    <None Remove="Port\OrgSetting\**" />
+    <None Remove="Template\WF\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="HttpHandler\App_OneFlow_RptSearch.cs" />
+    <Compile Remove="HttpHandler\Root2021.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.2" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BP.En30\BP.En30.NetCore.csproj" />
+    <ProjectReference Include="..\BP.WF\BP.WF.NetCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="QRCoder">
+      <HintPath>..\..\RefDLL\QRCoder.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
