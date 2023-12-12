@@ -39,7 +39,7 @@ builder.Services.Configure<KestrelServerOptions>(options =>
 {
     options.AllowSynchronousIO = true;
 });
-var basePath = System.AppDomain.CurrentDomain.BaseDirectory;
+var basePath = AppDomain.CurrentDomain.BaseDirectory;
 
 builder.Services.AddSwaggerGen();
 // 用于类库中访问HttpContext，等价于： services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -69,7 +69,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-builder.Services.AddTransient<IStartupFilter, RequestSetOptionsStartupFilter>();
+//builder.Services.AddTransient<IStartupFilter, RequestSetOptionsStartupFilter>();
 
 var app = builder.Build();
 
@@ -101,7 +101,7 @@ app.UseCookiePolicy(new CookiePolicyOptions
 });
 //ccflow核心中间件
 app.UseCcHandler();
-//app.UseMiddleware<CcHandlerMiddleware>();
+//app.UseRequestCulture();
 
 app.UseAuthorization();
 
@@ -121,7 +121,7 @@ app.MapControllers();
 app.UseStaticHttpContext();
 
 // En30里面用到
-HttpContextHelper.PhysicalApplicationPath = ((IWebHostEnvironment)builder.Environment).ContentRootPath + Path.DirectorySeparatorChar; ;
+HttpContextHelper.PhysicalApplicationPath = builder.Environment.ContentRootPath + Path.DirectorySeparatorChar; ;
 NetCoreAppHelper.ServiceProvider = ((IApplicationBuilder)app).ApplicationServices;
 
 app.Run();
